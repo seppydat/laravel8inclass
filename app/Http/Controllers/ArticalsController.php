@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Articals;
+use App\Http\Requests\ArticalRequest;
 
 class ArticalsController extends Controller
 {
@@ -28,6 +29,7 @@ class ArticalsController extends Controller
     public function create()
     {
         //
+        return view('Articals.create');
     }
 
     /**
@@ -36,9 +38,19 @@ class ArticalsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticalRequest $request)
     {
         //
+        $artical = new Articals();
+
+        $data = $request->all();
+        
+        $artical->title = $data['title'];
+        $artical->contents = $data['contents'];
+
+        $artical->save();
+
+        return redirect()->route('baiviet.index');
     }
 
     /**
@@ -64,6 +76,9 @@ class ArticalsController extends Controller
     public function edit($id)
     {
         //
+        $artical = Articals::find($id);
+
+        return view('Articals.edit')->with('artical', $artical);
     }
 
     /**
@@ -73,9 +88,17 @@ class ArticalsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticalRequest $request, $id)
     {
         //
+        $artical = Articals::find($id);
+
+        $artical->title = $request->title;
+        $artical->contents = $request->contents;
+
+        $artical->save();
+
+        return redirect()->route('baiviet.index');
     }
 
     /**
@@ -87,5 +110,8 @@ class ArticalsController extends Controller
     public function destroy($id)
     {
         //
+        Articals::destroy($id);
+
+        return redirect()->route('baiviet.index');
     }
 }

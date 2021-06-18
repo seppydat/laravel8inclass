@@ -13,7 +13,7 @@ class ArticalRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class ArticalRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'min:8|max:100|required',
+            'contents' => 'min:8|required'
         ];
     }
 }

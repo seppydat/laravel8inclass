@@ -1,4 +1,8 @@
+@extends('layouts.app')
+
+@section('content')
 <h1>List Articals by Seppy</h1>
+<a href="{{ route('baiviet.create') }}">Create New Artical</a>
 
 @foreach($articals as $artical)
 	<div>
@@ -9,3 +13,4 @@
 <div>
     {!! $articals->links() !!}
 </div>
+@endsection
