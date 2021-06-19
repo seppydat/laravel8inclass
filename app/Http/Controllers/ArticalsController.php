@@ -40,7 +40,8 @@ class ArticalsController extends Controller
      */
     public function store(ArticalRequest $request)
     {
-        //
+        // this is store
+        
         $artical = new Articals();
 
         $data = $request->all();
