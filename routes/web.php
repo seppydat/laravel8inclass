@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::resource('baiviet', 'ArticalsController');
 
+Route::resource('demo', 'demoController');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
