@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//fgsdgsd
 Route::resource('baiviet', 'ArticalsController');
 
 Route::resource('demo', 'demoController');
